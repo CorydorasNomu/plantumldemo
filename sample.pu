@@ -11,9 +11,6 @@ else 書籍ID in ブラックリスト
 else
   server -> db: SELECT: 書籍ID
   server <-- db: 書籍情報
-  alt 書籍情報 == NULL
-    user <-- server: Response: 404 Not Found
-  end
   user <-- server: Response: 200 書籍情報
 end
 @enduml
