@@ -1,0 +1,10 @@
+@startuml Sample Sequence
+actor       User     as user
+participant Server   as server
+database    Database as db
+
+user -> server: Request: 書籍ID
+server -> db: SELECT: 書籍ID
+server <-- db: 書籍情報
+user <-- server: Response: 200 書籍情報
+@enduml
