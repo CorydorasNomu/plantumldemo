@@ -6,6 +6,8 @@ database    Database as db
 user -> server: Request: 書籍ID
 alt 書籍ID == NULL
   user <-- server: Response: 400 Bad Request
+else 書籍ID in ブラックリスト
+  user <-- server: Response: 403 Forbidden
 end
 server -> db: SELECT: 書籍ID
 server <-- db: 書籍情報
