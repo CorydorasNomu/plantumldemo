@@ -8,8 +8,13 @@ alt 書籍ID == NULL
   user <-- server: Response: 400 Bad Request
 else 書籍ID in ブラックリスト
   user <-- server: Response: 403 Forbidden
+else
+  server -> db: SELECT: 書籍ID
+  server <-- db: 書籍情報
+  alt 書籍情報 == NULL
+    user <-- server: 404 Not Found
+  else
+    user <-- server: Response: 200 書籍情報
+  end
 end
-server -> db: SELECT: 書籍ID
-server <-- db: 書籍情報
-user <-- server: Response: 200 書籍情報
 @enduml
